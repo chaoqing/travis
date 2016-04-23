@@ -9,7 +9,6 @@ android:
     #- extra-android-support
 script:
 - ./gradlew assembleRelease
-- find . -name '*apk'
 before_install:
 - openssl aes-256-cbc -K $termux_key -iv $termux_iv -in keys/termux.keystore.enc -out keys/termux.keystore -d
 - openssl aes-256-cbc -K $travis_key -iv $travis_iv -in keys/travis.enc -out travis -d
