@@ -10,8 +10,8 @@ script:
 - ./gradlew assembleRelease
 - find . -type f
 before_install:
-- openssl aes-256-cbc -K $encrypted_9d38ca6f832b_key -iv $encrypted_9d38ca6f832b_iv -in keys/termux.keystore.enc -out keys/termux.keystore -d
-- openssl aes-256-cbc -K $encrypted_9d38ca6f832b_key -iv $encrypted_9d38ca6f832b_iv -in travis.enc -out travis -d
+- openssl aes-256-cbc -K $termux_key -iv $termux_iv -in keys/termux.keystore.enc -out keys/termux.keystore -d
+- openssl aes-256-cbc -K $travis_key -iv $travis_iv -in keys/travis.enc -out travis -d
 deploy:
   provider: releases
   api_key:
