@@ -13,6 +13,7 @@ android {
             jni.srcDirs = []
         }
     }
+
     defaultConfig {
         applicationId "com.termux"
         minSdkVersion 21
