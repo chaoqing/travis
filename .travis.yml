@@ -8,15 +8,15 @@ android:
   - extra-android-support
 script:
 - ./gradlew assembleRelease
+- find . -type f
 before_install:
-- openssl aes-256-cbc -K $encrypted_9d38ca6f832b_key -iv $encrypted_9d38ca6f832b_iv
-  -in travis.enc -out travis -d
-
-deploy:  
+- openssl aes-256-cbc -K $encrypted_9d38ca6f832b_key -iv $encrypted_9d38ca6f832b_iv -in keys/termux.keystore.enc -out keys/termux.keystore -d
+- openssl aes-256-cbc -K $encrypted_9d38ca6f832b_key -iv $encrypted_9d38ca6f832b_iv -in keys/travis.enc -out travis -d
+deploy:
   provider: releases
   api_key:
     secure: IkjmWwRYUzzqAnmntKSXnr8LAIEXsl2K+FKBZGAFd0hVTo3Zv6DJvubb7UH7KPUZLM3CQC7Pm5OJ9cgpL7dyPXKV5FygMjFgJUdM02CSl5QLL/7Dr9Sbf6h2YzmM+S/Dxs0zZkhjOk1X5JnVADIjpNJQCUUn9gFL8jFnJHjwtSQF6OwXPggwHlefvhSo8FQ7Q+pO0B9YMq4bP/iwf4ZY+d+g3552wOdlsy3VKR4kcZa+EjSa18IejJe83uJDjRnA6pn4sH2LeUkds/BiATJmX/wdtqjLmYftRYOdl15QFCuNYMNvcbHQ8yUIrsDCIlSrYgWJeXFWXA5XIh3S2bwPC4hyoQ7l2CaLn+6a6/l4jbIdyt3/2MZeiW/yMQkAnl4WKN4c0DA0RGh46oppNk0QsswSMHvD2Ui09rXx35ulWyqJMxKqQOIzmw7kWWq1KWhIsXq32QjabA1NN4ZT70QLArUfYy+nj5LDcWSWJqkuljXm4m4kPeGOLKGvSCjpfGeHUw1V3mUjhbktIkt1CuvqiD3rxq//sxw3xTVV9xJCFqB1RPiLIbAVtIdL9Ukh21BGhqo/UWlvI7HDHTAcHaoyQXc+5FkPMkTxMAMGj5vzVqRkU8hARelg/5O/DoreTUO4uj2gWlDWkD3634YSMyRHs1+dhhYp98Bjk5Pvqjd7vh0=
-  file: app/build/outputs/apk/app-release.apk
+  file: app/build/outputs/apk/termux.widget.apk
   skip_cleanup: true
   on:
     tags: true
