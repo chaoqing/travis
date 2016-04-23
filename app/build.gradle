@@ -13,13 +13,22 @@ android {
             jni.srcDirs = []
         }
     }
-
     defaultConfig {
         applicationId "com.termux"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 34
         versionName "0.34"
+        archivesBaseName = "termux"
+    }
+
+    signingConfigs {
+        releaseConfig {
+            storeFile file("../keys/termux.keystore")
+            storePassword project.hasProperty("KEYSTORE_PASS") ? KEYSTORE_PASS : System.getenv("TERMUX_KEYSTORE_PASS")
+            keyAlias project.hasProperty("ALIAS_NAME") ? ALIAS_NAME : System.getenv("TERMUX_WIDGET_ALIAS_NAME")
+            keyPassword project.hasProperty("ALIAS_PASS") ? ALIAS_PASS : System.getenv("TERMUX_ALIAS_PASS")
+        }
     }
 
     buildTypes {
